@@ -1,0 +1,217 @@
+// Color palette
+@white: white;
+@text_grey: rgb(93, 93, 93);
+@text_dark_red: rgb(56, 47, 47);
+@dark_blue: rgb(20, 67, 88);
+@dark_blue_hover: rgb(23, 48, 66);
+@orange: rgb(177, 89, 14);
+@light_orange: rgb(243, 235, 228);
+@money_green: green;
+@filter_freq_color: rgb(158, 158, 158);
+@route_container: rgb(221, 229, 236);
+
+// Re-used values
+@default_border_radius: 4px;
+
+body {
+  margin: 1.7em 2.5em 2.5em 2.5em;
+  background-image: url(../img/gplaypattern.png);
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  color: @dark_blue;
+}
+
+// Reset default list styles
+.filters,
+.results,
+.segments,
+.segments_full,
+.stop_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.filters {
+  margin-bottom: 1em;
+  padding: 0.6em 1em 0.6em 1em;
+  border-radius: @default_border_radius;
+  color: @white;
+  background-color: @dark_blue;
+  li {
+    margin-right: 1.2em;
+    display: inline-block;
+    
+    .filter {
+      font-size: 0.8em;
+      padding: 4px;
+      border-radius: @default_border_radius;
+      &:hover {
+        cursor: pointer;
+        background-color: @dark_blue_hover;
+      }
+      .type_frequency {
+        padding-left: 0.4em;
+        color: @filter_freq_color;
+      }
+    }
+  }
+}
+
+// List of results
+.results .route {
+  margin-bottom: 10px;
+  .route_container {
+    background-color: @route_container;
+    border: 1px solid @dark_blue;
+    border-radius: @default_border_radius;
+    padding: 0.6em;
+    overflow: auto;
+    clear: both;
+    // Route details view
+    &.details {
+      border-color: @orange;
+      background-color: @light_orange;
+      .inner {
+        p:first-child {
+          margin-top: 0;
+          margin-bottom: 0.7em;
+        }
+        .segments_full {
+          &>li {
+            clear: both;
+          }
+          .segment,
+          .segment_meta {
+            float: left;
+            margin-bottom: 1em;
+          }
+          .segment_meta {
+            margin-left: 0.7em;
+            font-size: 0.9em;
+            color: @text_dark_red;
+            .travel_mode,
+            .direction {
+              font-weight: bold;
+              margin-right: 0.2em;
+            }
+            .stop_list .stop_name {
+              color: @text_grey;
+            }
+          }
+          &>li:last-child .segment_meta {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+  
+  .route_times,
+  .segments {
+    float: left;
+  }
+  
+  .more_info {
+    font-size: 0.9em;
+    display: inline-block;
+    p {
+      margin: 0;
+    }
+    .money,
+    .departure,
+    .car_sharing_info {
+      margin-right: 0.5em;
+    }
+    .departure,
+    .car_sharing_info {
+      color: @text_grey;
+    }
+    .money {
+      color: @money_green;
+      font-weight: bold;
+    }
+  }
+  
+  .route_times p {
+    margin: 4px 0.5em 0 0;
+  }
+  
+  .duration {
+    font-weight: bold;
+  }
+  
+  a.show_details {
+    border-radius: 2px;
+    cursor: pointer;
+    color: @orange;
+    font-size: 0.8em;
+    padding: 2px;
+  }
+  
+  .segments {
+    margin-right: 0.4em;
+    li {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 5px;
+    }
+  }
+  .segment {
+    width: 36px;
+    height: 59px;
+    border-radius: @default_border_radius;
+    background-position: center 4px;
+    background-size: 28px 32px;
+    background-repeat: no-repeat;
+    text-align: center;
+    .segment_name {
+      display: block;
+      padding-top: 39px;
+      font-size: 14px;
+      color: @white;
+    }
+  }
+  
+  .compact_inner {
+    position: relative;
+    .provider_icon_container {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      .provider_icon {
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: 125px 41px;
+        display: inline-block;
+        width: 125px;
+        height: 41px;
+        
+        // The SVG canvas for these is 125x41, but some of the icons are rather
+        // square-shaped with too much padding left and right.
+        &.vbb {
+          width: 41px;
+        }
+        &.car2go {
+          width: 70px;
+        }
+        &.nextbike {
+          width: 41px;
+        }
+        &.callabike {
+          width: 60px;
+        }
+      }
+    }
+  }
+}
